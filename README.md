@@ -115,8 +115,9 @@ Production Deployment
   ```
 * Zabbix Configuration
   * Import the monitoring template [zabbix template](template/custom_service_kubernetes.xml) to zabbix : Configuration →  Templates → Import
+    提供的是5.4版本，6.0版本导入时，需要修改xml中的版本号
   * Create a virtual monitoring host for your kubernetes cluster <BR>
-    (i.e. "k8s-prod-001", name should match to the ZABBIX\_HOST in the deployment.yaml of the next step)
+    (i.e. "k8s-prod-001", name should match to the ZABBIX\_HOST in the deployment.yaml of the next step)  
   * Assign the template to that host
 * Create and apply deployment
   (adapt the configuration values for your environment)
