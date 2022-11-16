@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: k8s-zabbix
-          image: scoopex666/k8s-zabbix:latest
+          image: slcnx/k8s-zabbix:latest
           args: [ "--show_effective_config" ]
           # review config_default.py for additionaol configuration values (convert the names to uppercase)
           env:
@@ -33,7 +33,7 @@ spec:
                value: "https://example.api.com/api/v1/k8s"
              # 连接api server时，不检验https证书
              - name: "VERIFY_SSL"
-               value: "false"
+               value: "False"
              # The security token for management api status submission
              - name: "WEB_API_TOKEN"
                value: "17812110692887024374221963068327794883098412835131004"
