@@ -31,6 +31,9 @@ spec:
              # The base uri of the anagement api status submission
              - name: "WEB_API_HOST"
                value: "https://example.api.com/api/v1/k8s"
+             # 连接api server时，不检验https证书
+             - name: "VERIFY_SSL"
+               value: "false"
              # The security token for management api status submission
              - name: "WEB_API_TOKEN"
                value: "17812110692887024374221963068327794883098412835131004"
