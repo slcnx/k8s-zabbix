@@ -54,12 +54,9 @@ Testing and development
 =======================
 
 
-* Clone Repo and install dependencies
+* Clone Repo 
   ```
   git clone git@github.com:zabbix-tooling/k8s-zabbix.git
-  virtualenv -p python3 venv
-  source venv/bin/activate
-  pip3 install -r requirements.txt
   ```
 * Create monitoring account
   ```
@@ -70,18 +67,16 @@ Testing and development
   kubectl get secrets -n monitoring
   kubectl describe secret -n monitoring <id>
   ```
-* Test
-  ```
-  source venv/bin/activate
-  cp config_default.py configd_c1.py
-  # edit to appropriate values for your setup
-  vim configd_c1
-  ./check_kubernetesd configd_c1
-  ```
 * Test in docker (IS ESSENTIAL FOR PUBLISH)
   ```
-  ./build.sh default
+  export DOCKER_SQUASH=false # 由于我的docker不支持这个特性
+  ./build.sh default <your_dockerhub_username>
   ```
+  `docker run  --env ZABBIX_SERVER=localhost --env ZABBIX_HOST=localhost --env WEB_API_HOST='https://example.kube-apiserver.com' --env K8S_CONFIG_TYPE=token  --name k8s-zabbix_test slcnx/k8s-zabbix:lastest --disable_colors` 此命令就是最终运行的命令
+  ```
+  docker push slcnx/k8s-zabbix:lastest
+  ```
+  
 * Create release
   ```
   git tag NEW_TAG
