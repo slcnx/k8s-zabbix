@@ -12,6 +12,7 @@ ENV CRYPTOGRAPHY_DONT_BUILD_RUST "1"
 
 COPY --chown=nobody:users requirements.txt /app/requirements.txt
 
+RUN sed -i -e 's@deb.debian.org@mirrors.tuna.tsinghua.edu.cn@g' -e 's@security.debian.org@mirrors.tuna.tsinghua.edu.cn@g' /etc/apt/sources.list
 RUN  apt-get update -y && \
        apt-get install libffi-dev libffi7 libssl-dev bash screen ncdu -y && \
        pip3 install --upgrade pip && \
