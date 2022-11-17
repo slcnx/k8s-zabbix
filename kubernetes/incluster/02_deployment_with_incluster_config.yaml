@@ -43,6 +43,11 @@ spec:
              # The name of the k8s cluster in the management system
              - name: "WEB_API_CLUSTER"
                value: "k8s-test-cluster"
+             # Debug
+             - name: "DEBUG"
+               value: "False"
+             - name: "ZABBIX_SINGLE_DEBUG"
+               value: "False"
           imagePullPolicy: Always
           resources:
             requests:
