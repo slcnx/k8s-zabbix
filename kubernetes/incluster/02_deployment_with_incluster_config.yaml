@@ -19,9 +19,12 @@ spec:
           args: [ "--show_effective_config" ]
           # review config_default.py for additionaol configuration values (convert the names to uppercase)
           env:
-             # 这个是zabbix sender的端口，默认是10051
+             # 这个是zabbix sender指向的主机
              - name: "ZABBIX_SERVER"
-               value: "zabbix.api.foo.bar:10051"
+               value: "zabbix.api.foo.bar"
+             # 这个是zabbix sender指向的端口
+             - name: "ZABBIX_PORT"
+               value: "30057"
              # the abstract/virtual host which is configured in zabbix to hold and alert k8s zabbix 
              - name: "ZABBIX_HOST"
                value: "k8s-prod-001"
