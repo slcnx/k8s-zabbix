@@ -93,8 +93,9 @@ class CheckKubernetesDaemon:
         self.core_v1 = KubernetesApi(self.api_client).core_v1
         self.apps_v1 = KubernetesApi(self.api_client).apps_v1
         self.extensions_v1 = KubernetesApi(self.api_client).extensions_v1
-
-        self.zabbix_sender = ZabbixSender(zabbix_server=config.zabbix_server)
+        
+        # 由于我们的sender是自定义端口，需要暴露 https://py-zabbix.readthedocs.io/en/latest/sender.html
+        self.zabbix_sender = ZabbixSender(zabbix_server=config.zabbix_server, zabbix_port=config.zabbix_port) 
         self.zabbix_resources = CheckKubernetesDaemon.exclude_resources(resources,
                                                                         self.config.zabbix_resources_exclude)
         self.zabbix_host = config.zabbix_host
