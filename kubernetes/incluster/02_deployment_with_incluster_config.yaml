@@ -48,8 +48,11 @@ spec:
                value: "False"
              - name: "ZABBIX_SINGLE_DEBUG"
                value: "False"
-             # discover data send interval, 1m 1次, 太久了，业务不可用. unit: s
+             #
              - name: 'RESEND_DATA_INTERVAL_SLOW'
+               value: '60'
+             #  discover data send interval, 1m 1次, 太久了，业务不可用. unit: s
+             - name: 'DISCOVERY_INTERVAL_SLOW'
                value: '60'
           imagePullPolicy: Always
           resources:
